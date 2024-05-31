@@ -1,9 +1,10 @@
 
 
+import 'package:candlesticks/candlesticks.dart';
 import 'package:web_socket_channel/web_socket_channel.dart';
 
 abstract class BinanceInterface {
-  Future<List<void>> getCandles({
+  Future<List<Candle>> getCandles({
     required String symbol,
     required String interval,
     int? endTime,

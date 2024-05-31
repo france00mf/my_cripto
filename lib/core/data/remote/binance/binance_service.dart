@@ -36,10 +36,12 @@ class BinanceServiceImpl implements BinanceService{
   }
 
   @override
-  Future<List<Candlesticks>> getCandles({required String symbol, required String interval, int? endTime}) async{
+  Future<List<Candle>> getCandles({required String symbol, required String interval, int? endTime}) async{
       final String uri="https://api.binance.com/api/v3/klines?symbol=$symbol&interval=$interval${endTime != null ? "&endTime=$endTime" : ""}";
+
+      final data=await _networkClient.get(uri) as List;
+      return data.map((e) => Candle.fromJson(e)).toList().reversed.toList();
       
-    throw UnimplementedError();
   }
 
 }
