@@ -18,4 +18,4 @@ abstract class BinanceInterface {
 
 abstract class BinanceService implements BinanceInterface {}
 
-abstract class BinanceRepository implements BinanceInterface {}
+
