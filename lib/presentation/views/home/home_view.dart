@@ -9,7 +9,7 @@ import 'package:my_cripto/extensions/context_extension.dart';
 import 'package:my_cripto/widgets/app_text.dart';
 import 'package:my_cripto/widgets/gap.dart';
 
-import '../../utils/utils.dart';
+import '../../../utils/utils.dart';
 
 final drawerItems = [
   'Exchange',
@@ -147,8 +147,8 @@ class _HomeViewState extends ConsumerState<HomeView>
                       }
                     },
                     child:
-                    const Text("Menu")
-                    //  SvgPicture.asset(AppAssets.menu),
+                    // const Text("Menu"),
+                     SvgPicture.asset(AppAssets.menu),
                   )
                 ],
               ),

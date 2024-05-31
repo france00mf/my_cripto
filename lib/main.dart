@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:my_cripto/utils/utils.dart';
-import 'package:my_cripto/views/home/home.dart';
+import 'package:my_cripto/presentation/views/home/home.dart';
 
 class Main {}
 
