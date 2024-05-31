@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:my_cripto/constants/app_assets.dart';
 import 'package:my_cripto/extensions/context_extension.dart';
 import 'package:my_cripto/widgets/app_text.dart';
@@ -127,16 +127,16 @@ class _HomeViewState extends ConsumerState<HomeView>
           child: AppBar(
             centerTitle: false,
             automaticallyImplyLeading: false,
-            title: SvgPicture.asset(
-              AppAssets.company_logo,
-              color: context.isDarkMode ? Colors.white : null,
-            ),
+            // title: SvgPicture.asset(
+            //   AppAssets.company_logo,
+            //   color: context.isDarkMode ? Colors.white : null,
+            // ),
             actions: [
               Row(
                 children: [
-                  Image.asset(AppAssets.avatar),
+                  // Image.asset(AppAssets.avatar),
                   Gap.w16,
-                  SvgPicture.asset(AppAssets.internet),
+                  // SvgPicture.asset(AppAssets.internet),
                   Gap.w16,
                   InkWell(
                     onTap: () {
@@ -146,7 +146,9 @@ class _HomeViewState extends ConsumerState<HomeView>
                         _scaffoldKey.currentState?.openEndDrawer();
                       }
                     },
-                    child: SvgPicture.asset(AppAssets.menu),
+                    child:
+                    const Text("Menu")
+                    //  SvgPicture.asset(AppAssets.menu),
                   )
                 ],
               ),
