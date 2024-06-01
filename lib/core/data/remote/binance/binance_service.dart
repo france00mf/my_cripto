@@ -43,5 +43,11 @@ class BinanceServiceImpl implements BinanceService{
       return data.map((e) => Candle.fromJson(e)).toList().reversed.toList();
       
   }
+  
+  @override
+  Future<List<void>> getSymbols() {
+    // TODO: implement getSymbols
+    throw UnimplementedError();
+  }
 
 }

@@ -1,4 +1,5 @@
 
+import 'package:candlesticks/candlesticks.dart';
 import 'package:my_cripto/core/data/remote/binance/binance_interface_imp.dart';
 import 'package:web_socket_channel/src/channel.dart';
 
@@ -10,7 +11,7 @@ class BinanceRepositoryImp implements BinanceInterface{
   }
 
   @override
-  Future<List<void>> getCandles({required String symbol, required String interval, int? endTime}) {
+  Future<List<Candle>> getCandles({required String symbol, required String interval, int? endTime}) {
     // TODO: implement getCandles
     throw UnimplementedError();
   }
