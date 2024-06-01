@@ -16,4 +16,10 @@ class BinanceRepositoryImp implements BinanceInterface{
     throw UnimplementedError();
   }
   
+  @override
+  Future<List<void>> getSymbols() {
+    // TODO: implement getSymbols
+    throw UnimplementedError();
+  }
+  
 }
