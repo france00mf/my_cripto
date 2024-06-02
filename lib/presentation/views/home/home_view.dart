@@ -18,30 +18,19 @@ final drawerItems = [
   'Log out',
 ];
 
-class HomeView extends ConsumerStatefulWidget {
+class HomeView extends StatefulWidget {
   const HomeView({super.key});
 
   @override
-  ConsumerState<ConsumerStatefulWidget> createState() => _HomeViewState();
+  State<HomeView> createState() => _HomeViewState();
 }
 
-class _HomeViewState extends ConsumerState<HomeView>
-    with SingleTickerProviderStateMixin {
+class _HomeViewState extends State<HomeView> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey();
-  late final TabController _tabController;
+  // late final TabController _tabController;
 
-  @override
-  void initState() {
-    _tabController = TabController(length: 3, vsync: this);
 
-    super.initState();
-  }
 
-  @override
-  void dispose() {
-    _tabController.dispose();
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -73,7 +62,6 @@ class _HomeViewState extends ConsumerState<HomeView>
                           height: 45,
                           margin: const EdgeInsets.symmetric(horizontal: 10),
                           decoration: BoxDecoration(
-                            // color: Colors.blue,
                             border: Border.all(
                               color: AppColors.blackTint,
                             ),
@@ -127,28 +115,28 @@ class _HomeViewState extends ConsumerState<HomeView>
           child: AppBar(
             centerTitle: false,
             automaticallyImplyLeading: false,
-            // title: SvgPicture.asset(
-            //   AppAssets.company_logo,
-            //   color: context.isDarkMode ? Colors.white : null,
-            // ),
+            title: SvgPicture.asset(
+              AppAssets.company_logo,
+              color: context.isDarkMode ? Colors.white : null,
+            ),
             actions: [
               Row(
                 children: [
-                  // Image.asset(AppAssets.avatar),
+                  Image.asset(AppAssets.avatar),
                   Gap.w16,
-                  // SvgPicture.asset(AppAssets.internet),
+                  SvgPicture.asset(AppAssets.internet),
                   Gap.w16,
                   InkWell(
                     onTap: () {
                       if (_scaffoldKey.currentState!.isEndDrawerOpen) {
                         _scaffoldKey.currentState?.closeEndDrawer();
-                      } else {
+                      }   else {
                         _scaffoldKey.currentState?.openEndDrawer();
                       }
                     },
                     child:
-                    // const Text("Menu"),
                      SvgPicture.asset(AppAssets.menu),
+
                   )
                 ],
               ),
@@ -163,7 +151,7 @@ class _HomeViewState extends ConsumerState<HomeView>
             children: [
               // Gap.h8,
        
-
+ 
               Container(
                 height: 300,
                 decoration: BoxDecoration(
