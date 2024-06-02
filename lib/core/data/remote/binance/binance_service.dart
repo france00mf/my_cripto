@@ -2,6 +2,7 @@
 import 'dart:convert';
 
 import 'package:candlesticks/candlesticks.dart';
+import 'package:my_cripto/core/data/model/symbol_response_model.dart';
 import 'package:my_cripto/core/data/remote/binance/binance_interface_imp.dart';
 import 'package:my_cripto/core/network_config/network_client.dart';
 import 'package:my_cripto/utils/app_logger.dart';
@@ -45,9 +46,11 @@ class BinanceServiceImpl implements BinanceService{
   }
   
   @override
-  Future<List<void>> getSymbols() {
-    // TODO: implement getSymbols
-    throw UnimplementedError();
+  Future<List<void>> getSymbols() async{
+    const uri ="https://api.binance.com/api/v3/ticker/price";
+    final res = await _networkClient.get(uri) as List;
+    final arr= res.map((e)=> SymbolResponseModel.fromMap(e)).toList();
+    return arr;
   }
 
 }
