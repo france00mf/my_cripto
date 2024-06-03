@@ -57,6 +57,19 @@ class BaseViewModel extends ChangeNotifier {
     notifyListeners();
   }
 
+   setSelectedInterval(int index) {
+    _selectedInterval = index;
+    notifyListeners();
+  }
 
+  setCandleTicker(CandleTickerModel candleT) {
+    _candleTicker = candleT;
+    notifyListeners();
+  }
+
+  setOrderBook(OrderBook data) {
+    _orderBooks = data;
+    notifyListeners();
+  }
 
 }
