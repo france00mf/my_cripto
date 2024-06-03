@@ -82,6 +82,7 @@ class _HomeViewState extends ConsumerState<HomeView> with TickerProviderStateMix
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                 
                   Gap.h10,
                   context.isDarkMode
                       ? const SizedBox.shrink()
@@ -176,8 +177,12 @@ class _HomeViewState extends ConsumerState<HomeView> with TickerProviderStateMix
         child: SingleChildScrollView(
           child: Column(
             children: [
-              // Gap.h8,
-       
+               const PriceChangeSection(),
+               
+              Gap.h8,
+
+
+
  
               Container(
                 height: 300,
@@ -190,10 +195,42 @@ class _HomeViewState extends ConsumerState<HomeView> with TickerProviderStateMix
                 ),
                 child: Container(),
               ),
+
+                   SizedBox(
+                      height: 550,
+                      child: TabBarView(
+                        controller: _tabController,
+                        physics: const NeverScrollableScrollPhysics(),
+                        children: [
+                          const CandleSticksSection(),
+                          const OrderBookSection(),
+                          Container(
+                            height: 30,
+                            padding: const EdgeInsets.all(20),
+                            child: AppText.heading5(
+                              'Recent Trades',
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+
+                          Container(
+                height: 300,
+                decoration: BoxDecoration(
+                  color: Theme.of(context).cardColor,
+                  border: Border.all(
+                    color: Theme.of(context).shadowColor,
+                    width: 1.5,
+                  ),
+                ),
+                child: const TradesSection(),
+              ),
             ],
           ),
         ),
       ),
+      bottomNavigationBar: BottomSheetSection(),
     );
   }
 }
