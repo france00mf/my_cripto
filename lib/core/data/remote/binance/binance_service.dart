@@ -2,6 +2,7 @@
 import 'dart:convert';
 
 import 'package:candlesticks/candlesticks.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:my_cripto/core/data/model/symbol_response_model.dart';
 import 'package:my_cripto/core/data/remote/binance/binance_interface_imp.dart';
 import 'package:my_cripto/core/network_config/network_client.dart';
@@ -52,5 +53,10 @@ class BinanceServiceImpl implements BinanceService{
     final arr= res.map((e)=> SymbolResponseModel.fromMap(e)).toList();
     return arr;
   }
+
+  final binanceServiceProvider = Provider<BinanceService>(
+    (ref)=>
+    BinanceServiceImpl(ref.read(networkClientProvider))
+  );
 
 }

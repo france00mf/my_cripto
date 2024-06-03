@@ -6,8 +6,11 @@ import 'package:flutter/foundation.dart';
 import 'package:my_cripto/core/data/model/candle_stick_ticker_model.dart';
 import 'package:my_cripto/core/data/model/order_book_model.dart';
 import 'package:my_cripto/core/data/model/symbol_response_model.dart';
+import 'package:my_cripto/presentation/states/viewmodel_state.dart';
 import 'package:my_cripto/utils/app_logger.dart';
 import 'package:web_socket_channel/web_socket_channel.dart';
+
+import '../../../../core/errors/errors.dart';
 
 class HomeViewModel extends BaseViewModel{
   final Ref ref;

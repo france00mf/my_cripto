@@ -287,3 +287,5 @@ class NetworkClient {
 final networkClientProvider = Provider<NetworkClient>((ref) {
   return NetworkClient();
 });
+
+
