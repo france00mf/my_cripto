@@ -18,17 +18,44 @@ final drawerItems = [
   'Log out',
 ];
 
-class HomeView extends StatefulWidget {
+class HomeView extends ConsumerStatefulWidget {
   const HomeView({super.key});
 
   @override
-  State<HomeView> createState() => _HomeViewState();
+  ConsumerState<HomeView> createState() => _HomeViewState();
 }
 
-class _HomeViewState extends State<HomeView> {
+class _HomeViewState extends ConsumerState<HomeView> with TickerProviderStateMixin{
+  
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey();
-  // late final TabController _tabController;
+  late final TabController _tabController;
 
+  // @override
+  // void initState(){
+  //   _tabController= TabController(length: 3, vsync: this);
+
+  //   WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+  //       ref.read(homeViewModelProvider).getSymbols().then((value){
+  //           if(vm.corruntSymbol != null ) {
+  //             ref.read(homeViewModelProvider).getCandles(vm.currentSymbol!, vm.currentInterval).then((value){
+  //               fi(vm.candleTicker == null) {
+  //                 vm.initializeWebSocket(
+  //                   interval: vm.currentInterval,
+  //                   symbol: vm.currentSymbol!.symbol
+  //                 );
+  //               }
+  //             });
+  //           }
+  //       });
+  //   });
+  //   super.initState();
+  // }
+
+  @override
+  void dispose(){
+    _tabController.dispose();
+    super.dispose();
+  }
 
 
 
