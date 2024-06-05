@@ -99,5 +99,12 @@ class HomeViewModel extends BaseViewModel{
       changeState(ViewModelState.error(err));
     }
   }
+
+
   
 }
+
+
+final homeViewModelProvider = ChangeNotifierProvider<HomeViewModel>(
+  (ref)=> HomeViewModel(ref)
+);
