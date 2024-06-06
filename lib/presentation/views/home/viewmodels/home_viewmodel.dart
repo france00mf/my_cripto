@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:my_cripto/core/data/model/dto_models/stream_value_dto.dart';
 import 'package:my_cripto/core/data/repository/binance_repository.dart';
 import 'package:my_cripto/presentation/states/base_viewmodel.dart';
 
@@ -165,7 +166,7 @@ class HomeViewModel extends BaseViewModel{
     try {
       final data = await ref.read(binanceRepositoryProvider).getCandles(
             symbol: streamValue.symbol.symbol,
-            interval: streamValue.interval!,
+            interval: streamValue.interval,
             endTime: _candles.last.date.millisecondsSinceEpoch,
           );
       _candles
