@@ -101,6 +101,28 @@ class HomeViewModel extends BaseViewModel{
     }
   }
 
+  getCandles(
+    SymbolResponseModel symbol, String interval
+  )async{
+    _logger.d("Gettin Candles .....");
+    try{
+      changeState(const ViewModelState.busy());
+      final result = await ref.read(binanceRepositoryProvider).getCandles(symbol: symbol.symbol, interval: interval.toLowerCase());
+
+      _candles = result;
+      _logger.d("Candles length -> ${_candles.length}");
+      changeState(const ViewModelState.idle());
+    }on Failure catch (e) {
+        changeState(ViewModelState.error(e));
+        _logger.e(e.message);
+    }
+    catch(e){
+      _logger.e(e.toString());
+      final err = AppError("Erro disconhecido", "Tente novamente");
+      changeState(ViewModelState.error(err));
+    }
+  }
+
 
   
 }

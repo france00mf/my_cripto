@@ -38,17 +38,18 @@ class _HomeViewState extends ConsumerState<HomeView> with TickerProviderStateMix
     _tabController= TabController(length: 3, vsync: this);
 
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      final vm= ref.watch(homeViewModelProvider);
         ref.read(homeViewModelProvider).getSymbols().then((value){
-            // if(vm.corruntSymbol != null ) {
-            //   ref.read(homeViewModelProvider).getCandles(vm.currentSymbol!, vm.currentInterval).then((value){
-            //     fi(vm.candleTicker == null) {
-            //       vm.initializeWebSocket(
-            //         interval: vm.currentInterval,
-            //         symbol: vm.currentSymbol!.symbol
-            //       );
-            //     }
-            //   });
-            // }
+            if(vm.currentSymbol != null ) {
+              ref.read(homeViewModelProvider).ge(vm.currentSymbol!, vm.currentInterval).then((value){
+                fi(vm.candleTicker == null) {
+                  vm.initializeWebSocket(
+                    interval: vm.currentInterval,
+                    symbol: vm.currentSymbol!.symbol
+                  );
+                }
+              });
+            }
         });
     });
     super.initState();
