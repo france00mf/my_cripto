@@ -9,15 +9,15 @@ class TradeButtons extends StatelessWidget{
     return SizedBox(
       width: 171,
       height: 32,
-      child: ElevatedButton(
-        style: ElevatedButton.styleFrom(
+      // child: ElevatedButton(
+      //   style: ElevatedButton.styleFrom(
 
-        ),
-        child: AppText.button(
-          "",
+      //   ),
+      //   child: AppText.button(
+      //     "",
           
-        ),
-      ),
+      //   ),
+      // ),
     );
   }
 

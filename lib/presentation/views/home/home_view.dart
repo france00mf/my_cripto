@@ -6,6 +6,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:my_cripto/constants/app_assets.dart';
 import 'package:my_cripto/extensions/context_extension.dart';
+import 'package:my_cripto/presentation/views/home/components/price_change_section.dart';
 import 'package:my_cripto/widgets/app_text.dart';
 import 'package:my_cripto/widgets/gap.dart';
 
@@ -202,8 +203,8 @@ class _HomeViewState extends ConsumerState<HomeView> with TickerProviderStateMix
                         controller: _tabController,
                         physics: const NeverScrollableScrollPhysics(),
                         children: [
-                          const CandleSticksSection(),
-                          const OrderBookSection(),
+                          // const CandleSticksSection(),
+                          // const OrderBookSection(),
                           Container(
                             height: 30,
                             padding: const EdgeInsets.all(20),
@@ -224,13 +225,14 @@ class _HomeViewState extends ConsumerState<HomeView> with TickerProviderStateMix
                     width: 1.5,
                   ),
                 ),
-                child: const TradesSection(),
+                // child: const TradesSection(),
+                child: Container(),
               ),
             ],
           ),
         ),
       ),
-      bottomNavigationBar: BottomSheetSection(),
+      // bottomNavigationBar: BottomSheetSection(),
     );
   }
 }
