@@ -6,7 +6,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:my_cripto/constants/app_assets.dart';
 import 'package:my_cripto/extensions/context_extension.dart';
+import 'package:my_cripto/presentation/views/home/components/bottom_sheet_section.dart';
 import 'package:my_cripto/presentation/views/home/components/price_change_section.dart';
+import 'package:my_cripto/presentation/views/home/viewmodels/home_viewmodel.dart';
 import 'package:my_cripto/widgets/app_text.dart';
 import 'package:my_cripto/widgets/gap.dart';
 
@@ -31,26 +33,26 @@ class _HomeViewState extends ConsumerState<HomeView> with TickerProviderStateMix
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey();
   late final TabController _tabController;
 
-  // @override
-  // void initState(){
-  //   _tabController= TabController(length: 3, vsync: this);
+  @override
+  void initState(){
+    _tabController= TabController(length: 3, vsync: this);
 
-  //   WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-  //       ref.read(homeViewModelProvider).getSymbols().then((value){
-  //           if(vm.corruntSymbol != null ) {
-  //             ref.read(homeViewModelProvider).getCandles(vm.currentSymbol!, vm.currentInterval).then((value){
-  //               fi(vm.candleTicker == null) {
-  //                 vm.initializeWebSocket(
-  //                   interval: vm.currentInterval,
-  //                   symbol: vm.currentSymbol!.symbol
-  //                 );
-  //               }
-  //             });
-  //           }
-  //       });
-  //   });
-  //   super.initState();
-  // }
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+        ref.read(homeViewModelProvider).getSymbols().then((value){
+            // if(vm.corruntSymbol != null ) {
+            //   ref.read(homeViewModelProvider).getCandles(vm.currentSymbol!, vm.currentInterval).then((value){
+            //     fi(vm.candleTicker == null) {
+            //       vm.initializeWebSocket(
+            //         interval: vm.currentInterval,
+            //         symbol: vm.currentSymbol!.symbol
+            //       );
+            //     }
+            //   });
+            // }
+        });
+    });
+    super.initState();
+  }
 
   @override
   void dispose(){
@@ -211,7 +213,9 @@ class _HomeViewState extends ConsumerState<HomeView> with TickerProviderStateMix
                             child: AppText.heading5(
                               'Recent Trades',
                             ),
-                          )
+                          ),
+                          Container(),
+                          Container()
                         ],
                       ),
                     ),
@@ -232,7 +236,7 @@ class _HomeViewState extends ConsumerState<HomeView> with TickerProviderStateMix
           ),
         ),
       ),
-      // bottomNavigationBar: BottomSheetSection(),
+      bottomNavigationBar: BottomSheetSection(),
     );
   }
 }
