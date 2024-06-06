@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:my_cripto/core/data/repository/binance_repository.dart';
 import 'package:my_cripto/presentation/states/base_viewmodel.dart';
@@ -120,6 +122,60 @@ class HomeViewModel extends BaseViewModel{
       _logger.e(e.toString());
       final err = AppError("Erro disconhecido", "Tente novamente");
       changeState(ViewModelState.error(err));
+    }
+  }
+
+    initializeWebSocket({
+    required String symbol,
+    required String interval,
+  }) async {
+    _logger.d("Initializing websocket..");
+    final binanceRepository = ref.read(binanceRepositoryProvider);
+
+    final chn = binanceRepository.establishSocketConnection(
+      interval: interval.toLowerCase(),
+      symbol: symbol.toLowerCase(),
+    );
+
+    await for (final String value in chn.stream) {
+    
+      final map = jsonDecode(value) as Map<String, dynamic>;
+      final eventType = map['e'];
+      if (eventType == 'kline') {
+        final candleTicker = CandleTickerModel.fromJson(map);
+        setCandleTicker(candleTicker);
+        if (_candles[0].date == candleTicker.candle.date &&
+            _candles[0].open == candleTicker.candle.open) {
+          _candles[0] = candleTicker.candle;
+          notifyListeners();
+        } else if (candleTicker.candle.date.difference(_candles[0].date) ==
+            _candles[0].date.difference(_candles[1].date)) {
+          _candles.insert(0, candleTicker.candle);
+          notifyListeners();
+        }
+      } else if (eventType == 'depthUpdate') {
+        final orderBookInfo = OrderBook.fromMap(map);
+        setOrderBook(orderBookInfo);
+      }
+    }
+  }
+
+  
+  Future<void> loadMoreCandles(StreamValueDTO streamValue) async {
+    try {
+      final data = await ref.read(binanceRepositoryProvider).getCandles(
+            symbol: streamValue.symbol.symbol,
+            interval: streamValue.interval!,
+            endTime: _candles.last.date.millisecondsSinceEpoch,
+          );
+      _candles
+        ..removeLast()
+        ..addAll(data);
+      notifyListeners();
+    } on Failure catch (e) {
+      _logger.d("Custom Error fetching candles ==> ${e.message}");
+    } catch (e) {
+      _logger.d("Error fetching more candles ::: ${e.toString()}");
     }
   }
 
