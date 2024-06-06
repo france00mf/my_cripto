@@ -31,9 +31,6 @@ class AppText extends StatelessWidget {
         super(key: key);
 
 
-  ///
-  /// fontSize `30`
-  /// fontWeight `700`
   AppText.heading2(
     this.text, {
     Key? key,

@@ -47,16 +47,18 @@ class BinanceServiceImpl implements BinanceService{
   }
   
   @override
-  Future<List<void>> getSymbols() async{
+  Future<List<SymbolResponseModel>> getSymbols() async{
     const uri ="https://api.binance.com/api/v3/ticker/price";
     final res = await _networkClient.get(uri) as List;
     final arr= res.map((e)=> SymbolResponseModel.fromMap(e)).toList();
     return arr;
   }
 
+
+
+}
+
   final binanceServiceProvider = Provider<BinanceService>(
     (ref)=>
     BinanceServiceImpl(ref.read(networkClientProvider))
   );
-
-}

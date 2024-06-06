@@ -1,4 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:my_cripto/core/data/repository/binance_repository.dart';
 import 'package:my_cripto/presentation/states/base_viewmodel.dart';
 
 import 'package:candlesticks/candlesticks.dart';

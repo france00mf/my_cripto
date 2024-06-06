@@ -1,11 +1,12 @@
 
 
 import 'package:candlesticks/candlesticks.dart';
+import 'package:my_cripto/core/data/model/symbol_response_model.dart';
 import 'package:web_socket_channel/web_socket_channel.dart';
 
 abstract class BinanceInterface {
   
-  Future<List<void>> getSymbols();
+  Future<List<SymbolResponseModel>> getSymbols();
 
   Future<List<Candle>> getCandles({
     required String symbol,

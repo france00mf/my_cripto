@@ -3,6 +3,7 @@ import 'package:candlesticks/candlesticks.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:my_cripto/core/data/model/symbol_response_model.dart';
 import 'package:my_cripto/core/data/remote/binance/binance_interface_imp.dart';
+import 'package:my_cripto/core/data/remote/binance/binance_service.dart';
 import 'package:web_socket_channel/src/channel.dart';
 
 class BinanceRepositoryImp implements BinanceInterface{
@@ -26,12 +27,14 @@ class BinanceRepositoryImp implements BinanceInterface{
   }
   
   @override
-  Future<List<void>> getSymbols() {
+  Future<List<SymbolResponseModel>> getSymbols() {
     return _binanceService.getSymbols();
   }
 
-  final binanceRepositoryProvider = Provider<BinanceRepository>((ref){
-    return BinanceRepositoryImp(ref.read(binanceServiceProvider));
-  });
+
   
 }
+
+  final binanceRepositoryProvider = Provider<BinanceRepositoryImp>((ref){
+    return BinanceRepositoryImp(ref.read(binanceServiceProvider));
+  });
