@@ -15,7 +15,7 @@ class PriceChangeSection extends ConsumerWidget {
   @override
   Widget build(BuildContext context, ref) {
     final vm = ref.watch(homeViewModelProvider);
-    Container(
+    return Container(
       height: 130,
       decoration: BoxDecoration(
         color: Theme.of(context).cardColor,
@@ -80,17 +80,107 @@ class PriceChangeSection extends ConsumerWidget {
                       AppText.body2(
                         '24h change',
                         color: AppColors.blackTint,
-                      )
+                      ),
+                       const Gap(5),
+                if(vm.candleTicker != null)
+                AppText.body1(
+                  '${vm.candleTicker?.candle.volume}',
+                  color: AppColors.green,
+                )
+                else
+                AppText.body1(
+                  '0.00 +0.00%',
+                  color: AppColors.green
+
+                )
                     ],
                   )
-                )
+                ),
+              const Gap(17),
+              Container(
+                width: 1,
+                height: 48,
+                color: AppColors.divider.withOpacity(.08),
+              ),
+
+              SizedBox(
+                    width: 90,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          children: [
+                            const Icon(
+                              Icons.arrow_upward_rounded,
+                              size: 18,
+                              color: AppColors.blackTint,
+                            ),
+                            const Gap(5),
+                            AppText.body2(
+                              '24h high',
+                              color: AppColors.blackTint,
+                            )
+                          ],
+                        ),
+                        const Gap(5),
+                        if (vm.candleTicker != null)
+                          AppText.body1(
+                            '${vm.candleTicker?.candle.high.formatValue()} +1%',
+                          )
+                        else
+                          AppText.body1(
+                            '0.00 +0.00%',
+                          )
+                      ],
+                    ),
+                  ),
+
+                  const Gap(17),
+                  Container(
+                    width: 1,
+                    height: 48,
+                    color: AppColors.divider.withOpacity(.08),
+                  ),
+                  const Gap(17),
+                  SizedBox(
+                    width: 100,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          children: [
+                            const Icon(
+                              Icons.arrow_downward_rounded,
+                              size: 18,
+                              color: AppColors.blackTint,
+                            ),
+                            const Gap(5),
+                            AppText.body2(
+                              '24h low',
+                              color: AppColors.blackTint,
+                            )
+                          ],
+                        ),
+                        const Gap(5),
+                        if (vm.candleTicker != null)
+                          AppText.body1(
+                            '${vm.candleTicker?.candle.low.formatValue()} -1%',
+                          )
+                        else
+                          AppText.body1(
+                            '0.00 -0.00%',
+                          )
+                      ],
+                    ),
+                  ),
+              
               ],
             ),
           ),
+
           )
         ],
       ),
     );
-    return const Placeholder();
   }
 }
