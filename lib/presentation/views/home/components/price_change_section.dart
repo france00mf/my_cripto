@@ -43,11 +43,26 @@ class PriceChangeSection extends ConsumerWidget {
                     children: [
                       // AppText.heading5(vm.currentInterval.symbol ?? ""),
                       const Gap(10),
+                      const Padding(
+                        padding: EdgeInsets.all(2),
+                        child: Icon(Icons.keyboard_arrow_down_rounded),
+                      )
                     ],
                   ),
-                )
+                ),
+                const Gap(27),
+                AppText.heading5(
+                  r'$0.0',
+                  color: AppColors.green
+                  )
               ]
             ],
+          ),
+          ),
+          Padding(padding: const EdgeInsets.symmetric(horizontal: 16),
+          child: SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(),
           ),
           )
         ],
