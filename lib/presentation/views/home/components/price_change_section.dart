@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:my_cripto/constants/app_assets.dart';
 import 'package:my_cripto/presentation/views/home/viewmodels/home_viewmodel.dart';
+import 'package:my_cripto/utils/app_colors.dart';
 import 'package:my_cripto/utils/sizing_config.dart';
 import 'package:my_cripto/widgets/app_text.dart';
 import 'package:my_cripto/widgets/gap.dart';
@@ -53,7 +54,8 @@ class PriceChangeSection extends ConsumerWidget {
                 const Gap(27),
                 AppText.heading5(
                   r'$0.0',
-                  color: AppColors.green
+                  color: AppColors.green,
+
                   )
               ]
             ],
@@ -62,7 +64,28 @@ class PriceChangeSection extends ConsumerWidget {
           Padding(padding: const EdgeInsets.symmetric(horizontal: 16),
           child: SingleChildScrollView(
             scrollDirection: Axis.horizontal,
-            child: Row(),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                SizedBox(
+                  width: 102,
+                  child: Column(
+                    children: [
+                      Icon(
+                        Icons.access_time_rounded,
+                        size: 18,
+                        color: AppColors.blackTint,
+                      ),
+                      const Gap(5),
+                      AppText.body2(
+                        '24h change',
+                        color: AppColors.blackTint,
+                      )
+                    ],
+                  )
+                )
+              ],
+            ),
           ),
           )
         ],

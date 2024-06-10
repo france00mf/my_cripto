@@ -41,8 +41,10 @@ class _HomeViewState extends ConsumerState<HomeView> with TickerProviderStateMix
       final vm= ref.watch(homeViewModelProvider);
         ref.read(homeViewModelProvider).getSymbols().then((value){
             if(vm.currentSymbol != null ) {
-              ref.read(homeViewModelProvider).ge(vm.currentSymbol!, vm.currentInterval).then((value){
-                fi(vm.candleTicker == null) {
+
+              ref.read(homeViewModelProvider).getCandles(vm.currentSymbol!, vm.currentInterval).then((value){
+
+                if(vm.candleTicker == null) {
                   vm.initializeWebSocket(
                     interval: vm.currentInterval,
                     symbol: vm.currentSymbol!.symbol
