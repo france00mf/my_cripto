@@ -7,6 +7,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:my_cripto/constants/app_assets.dart';
 import 'package:my_cripto/extensions/context_extension.dart';
 import 'package:my_cripto/presentation/views/home/components/bottom_sheet_section.dart';
+import 'package:my_cripto/presentation/views/home/components/order_book_section.dart';
 import 'package:my_cripto/presentation/views/home/components/price_change_section.dart';
 import 'package:my_cripto/presentation/views/home/viewmodels/home_viewmodel.dart';
 import 'package:my_cripto/widgets/app_text.dart';
@@ -209,7 +210,7 @@ class _HomeViewState extends ConsumerState<HomeView> with TickerProviderStateMix
                         physics: const NeverScrollableScrollPhysics(),
                         children: [
                           // const CandleSticksSection(),
-                          // const OrderBookSection(),
+                           OrderBookSection(),
                           Container(
                             height: 30,
                             padding: const EdgeInsets.all(20),
@@ -217,7 +218,7 @@ class _HomeViewState extends ConsumerState<HomeView> with TickerProviderStateMix
                               'Recent Trades',
                             ),
                           ),
-                          Container(),
+                          // Container(),
                           Container()
                         ],
                       ),

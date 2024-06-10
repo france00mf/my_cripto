@@ -125,7 +125,8 @@ class PriceChangeSection extends ConsumerWidget {
                         const Gap(5),
                         if (vm.candleTicker != null)
                           AppText.body1(
-                            '${vm.candleTicker?.candle.high.formatValue()} +1%',
+                            'asd'
+                            // '${vm.candleTicker?.candle.high.formatValue()} +1%',
                           )
                         else
                           AppText.body1(
@@ -164,7 +165,8 @@ class PriceChangeSection extends ConsumerWidget {
                         const Gap(5),
                         if (vm.candleTicker != null)
                           AppText.body1(
-                            '${vm.candleTicker?.candle.low.formatValue()} -1%',
+                            'asd'
+                            // '${vm.candleTicker?.candle.low.formatValue()} -1%',
                           )
                         else
                           AppText.body1(
