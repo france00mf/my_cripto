@@ -199,8 +199,34 @@ class _HomeViewState extends ConsumerState<HomeView> with TickerProviderStateMix
                     color: Theme.of(context).shadowColor,
                     width: 1.5,
                   ),
+                  borderRadius: BorderRadius.circular(8)
                 ),
-                child: Container(),
+                child: TabBar(
+                  controller: _tabController,
+                  padding: const EdgeInsets.all(2),
+                  labelStyle: const TextStyle(
+                    fontFamily: 'Satoshi',
+                    fontWeight: FontWeight.w700,
+                    fontSize: 13
+                  ),
+                  tabs: [
+                    DecoratedBox(decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(8)
+                    ),
+                    child: AppText.body2('Charts'),
+                    ),
+                    DecoratedBox(decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    child: AppText.body2("OderBook"),
+                    ),
+                    DecoratedBox(decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    child: AppText.body2("Recent Trades"),
+                    )
+                  ],
+                ),
               ),
 
                    SizedBox(
@@ -209,7 +235,7 @@ class _HomeViewState extends ConsumerState<HomeView> with TickerProviderStateMix
                         controller: _tabController,
                         physics: const NeverScrollableScrollPhysics(),
                         children: [
-                          // const CandleSticksSection(),
+                          const CandleSticksSection(),
                            OrderBookSection(),
                           Container(
                             height: 30,
@@ -233,8 +259,8 @@ class _HomeViewState extends ConsumerState<HomeView> with TickerProviderStateMix
                     width: 1.5,
                   ),
                 ),
-                // child: const TradesSection(),
-                child: Container(),
+                child: const TradesSection(),
+                // child: Container(),
               ),
             ],
           ),
