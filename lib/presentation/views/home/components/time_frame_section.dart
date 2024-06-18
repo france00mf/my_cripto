@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:my_cripto/constants/app_assets.dart';
 import 'package:my_cripto/extensions/context_extension.dart';
 import 'package:my_cripto/presentation/views/home/viewmodels/home_viewmodel.dart';
 import 'package:my_cripto/utils/app_colors.dart';
@@ -65,8 +67,50 @@ class TimerFrameSection extends ConsumerWidget{
               ),
             ),
           ),
-        )
-        )
+        ),
+
+        
+        ),
+
+        InkWell(
+              onTap: () {},
+              child: Row(
+                children: [
+                  const Padding(
+                    padding: EdgeInsets.all(2),
+                    child: Icon(
+                      Icons.keyboard_arrow_down_rounded,
+                      size: 18,
+                    ),
+                  ),
+                  Container(
+                    width: 1,
+                    height: 25,
+                    color: AppColors.divider.withOpacity(.08),
+                  ),
+                  const Gap(5),
+                  SvgPicture.asset(
+                    AppAssets.charts,
+                  )
+                ],
+              ),
+            ),
+
+            Gap.w6,
+            Container(
+              width: 1,
+              height: 25,
+              color: AppColors.divider.withOpacity(.08),
+            ),
+            Gap.w6,
+            AppText.body1(
+              'Fx Indicators',
+              color: context.isDarkMode
+                  ? AppColors.blackTint
+                  : AppColors.blackTint2,
+            ),
+            Gap.w6,
+
       ],
     )),
     );
