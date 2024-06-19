@@ -10,6 +10,7 @@ import 'package:my_cripto/presentation/views/home/components/bottom_sheet_sectio
 import 'package:my_cripto/presentation/views/home/components/candle_sticks_section.dart';
 import 'package:my_cripto/presentation/views/home/components/order_book_section.dart';
 import 'package:my_cripto/presentation/views/home/components/price_change_section.dart';
+import 'package:my_cripto/presentation/views/home/components/trades_section.dart';
 import 'package:my_cripto/presentation/views/home/viewmodels/home_viewmodel.dart';
 import 'package:my_cripto/widgets/app_text.dart';
 import 'package:my_cripto/widgets/gap.dart';
