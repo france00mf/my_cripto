@@ -155,6 +155,25 @@ class _CandleSticksSectionState extends ConsumerState<CandleSticksSection> {
                     ),
                   ),
 
+                  if(vm.candleTicker != null)
+                  ToolBarAction(child: Padding(padding: EdgeInsets.only(left: 2),
+                  child: Row(
+                    children: [
+                      AppText.body2('c',
+                      fontSize: 11,
+                      color: AppColors.blackTint2,
+                      ),
+                      AppText.body2(
+                        vm.candleTicker?.candle.close.formatValue() ??"",
+                        fontSize: 11,
+                        color: AppColors.green,
+                      )
+                    ],
+                  ),
+                  ), onPressed: (){
+                    
+                  })
+
 
               ],
               

@@ -193,41 +193,50 @@ class _HomeViewState extends ConsumerState<HomeView> with TickerProviderStateMix
 
 
  
-              Container(
-                height: 300,
-                decoration: BoxDecoration(
+              DecoratedBox(
+                 decoration: BoxDecoration(
                   color: Theme.of(context).cardColor,
                   border: Border.all(
                     color: Theme.of(context).shadowColor,
-                    width: 1.5,
+                    width: 1.5
+                  )
+                 ),
+                child: Container(
+                  height: 300,
+                  decoration: BoxDecoration(
+                    color: Theme.of(context).cardColor,
+                    border: Border.all(
+                      color: Theme.of(context).shadowColor,
+                      width: 1.5,
+                    ),
+                    borderRadius: BorderRadius.circular(8)
                   ),
-                  borderRadius: BorderRadius.circular(8)
-                ),
-                child: TabBar(
-                  controller: _tabController,
-                  padding: const EdgeInsets.all(2),
-                  labelStyle: const TextStyle(
-                    fontFamily: 'Satoshi',
-                    fontWeight: FontWeight.w700,
-                    fontSize: 13
+                  child: TabBar(
+                    controller: _tabController,
+                    padding: const EdgeInsets.all(2),
+                    labelStyle: const TextStyle(
+                      fontFamily: 'Satoshi',
+                      fontWeight: FontWeight.w700,
+                      fontSize: 13
+                    ),
+                    tabs: [
+                      DecoratedBox(decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(8)
+                      ),
+                      child: AppText.body2('Charts'),
+                      ),
+                      DecoratedBox(decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      child: AppText.body2("OderBook"),
+                      ),
+                      DecoratedBox(decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      child: AppText.body2("Recent Trades"),
+                      )
+                    ],
                   ),
-                  tabs: [
-                    DecoratedBox(decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(8)
-                    ),
-                    child: AppText.body2('Charts'),
-                    ),
-                    DecoratedBox(decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    child: AppText.body2("OderBook"),
-                    ),
-                    DecoratedBox(decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    child: AppText.body2("Recent Trades"),
-                    )
-                  ],
                 ),
               ),
 
@@ -246,11 +255,11 @@ class _HomeViewState extends ConsumerState<HomeView> with TickerProviderStateMix
                               'Recent Trades',
                             ),
                           ),
-                          // Container(),
-                          // Container()
                         ],
                       ),
                     ),
+
+                  Gap.h30,
 
                           Container(
                 height: 300,
@@ -262,7 +271,7 @@ class _HomeViewState extends ConsumerState<HomeView> with TickerProviderStateMix
                   ),
                 ),
                 child: const TradesSection(),
-                // child: Container(),
+               
               ),
             ],
           ),
