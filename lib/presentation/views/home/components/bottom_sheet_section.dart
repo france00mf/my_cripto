@@ -59,8 +59,8 @@ void displayBottomSheet(
     backgroundColor:        context.isDarkMode ? const Color(0xff20252B) : AppColors.white,
     barrierColor: Colors.black.withOpacity(0.5),
     builder: (BuildContext buildContext) {
-      // return const TradeBottomSheet();
-      throw UnimplementedError();
+      return const TradeBottomSheet();
+      
     },
   );
 }
