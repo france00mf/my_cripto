@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:my_cripto/extensions/extensions.dart';
 import 'package:my_cripto/presentation/widgets/trade_buttons.dart';
+import 'package:my_cripto/widgets/trade_buttom_sheet.dart';
 
 import '../../../../utils/utils.dart';
 
